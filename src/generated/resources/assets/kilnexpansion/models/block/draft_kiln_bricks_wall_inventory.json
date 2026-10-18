@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "kilnexpansion:block/draft_kiln_bricks"
+  }
+}
