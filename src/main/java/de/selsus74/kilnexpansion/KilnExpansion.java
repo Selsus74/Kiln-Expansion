@@ -1,6 +1,7 @@
 package de.selsus74.kilnexpansion;
 
 import com.mojang.logging.LogUtils;
+import de.selsus74.kilnexpansion.registry.ModBlockEntities;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import de.selsus74.kilnexpansion.registry.ModCreativeTabs;
 import de.selsus74.kilnexpansion.registry.ModItems;
@@ -28,7 +29,7 @@ public class KilnExpansion {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
-        //ModBlockEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         //ModMenuTypes.register(modEventBus);
         //ModCreativeTabs.register(modEventBus);
         //ModRecipes.register(modEventBus);
