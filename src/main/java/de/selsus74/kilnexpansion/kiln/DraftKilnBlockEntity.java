@@ -1,5 +1,6 @@
 package de.selsus74.kilnexpansion.kiln;
 
+import de.selsus74.kilnexpansion.multiblock.DraftKilnStructure;
 import de.selsus74.kilnexpansion.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,6 +13,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeHooks;
@@ -69,6 +71,11 @@ public class DraftKilnBlockEntity extends BlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, DraftKilnBlockEntity be) {
+        if (level.getGameTime() % 20 == 0) {
+            be.updateFormedState();
+        }
+        state = be.getBlockState();
+
         boolean changed = false;
 
         if (!state.getValue(DraftKilnControllerBlock.FORMED)) {
@@ -86,6 +93,15 @@ public class DraftKilnBlockEntity extends BlockEntity {
         }
 
         if (changed) be.setChanged();
+    }
+
+    public void updateFormedState() {
+        if (level == null || level.isClientSide) return;
+        BlockState state = getBlockState();
+        boolean valid = DraftKilnStructure.isValid(level, worldPosition, state.getValue(DraftKilnControllerBlock.FACING));
+        if (valid != state.getValue(DraftKilnControllerBlock.FORMED)) {
+            level.setBlock(worldPosition, state.setValue(DraftKilnControllerBlock.FORMED, valid), Block.UPDATE_ALL);
+        }
     }
 
     //---fuel helper - use in recipe handler---
