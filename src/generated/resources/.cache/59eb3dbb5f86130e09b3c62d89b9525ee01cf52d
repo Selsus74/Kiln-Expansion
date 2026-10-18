@@ -1,3 +1,4 @@
-// 1.20.1	2026-10-18T19:09:40.5862324	Loot Tables
+// 1.20.1	2026-10-18T21:21:48.9690013	Loot Tables
 19348b30616f9dda522c3bb51290e676ea60e15a data/kilnexpansion/loot_tables/blocks/draft_kiln_bricks.json
 dfbe665d471b63736a13fce47e859888d356e6c1 data/kilnexpansion/loot_tables/blocks/draft_kiln_bricks_wall.json
+3afc076d9d83c37cb319ee16d889751f838a5af3 data/kilnexpansion/loot_tables/blocks/draft_kiln_controller.json

@@ -1,12 +1,14 @@
 package de.selsus74.kilnexpansion.registry;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
+import de.selsus74.kilnexpansion.kiln.DraftKilnControllerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,6 +26,7 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, KilnExpansion.MOD_ID);
 
+    //---list of stone like blocks (e.g. bricks) and their corresponding wall---
     public static final List<String> STONE_TYPE_BLOCKS = List.of(
             "draft_kiln_bricks"
     );
@@ -59,6 +62,19 @@ public class ModBlocks {
             ITEM_MAP.put(wallName, wallItem);
         }
     }
+
+    //---draft kiln controller block + block item---
+    public static final RegistryObject<Block> DRAFT_KILN_CONTROLLER = BLOCKS.register(
+            "draft_kiln_controller",
+            () -> new DraftKilnControllerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .strength(3.0f, 6.0f)
+                    .sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Item> DRAFT_KILN_CONTROLLER_ITEM = ITEMS.register(
+            "draft_kiln_controller",
+            () -> new BlockItem(DRAFT_KILN_CONTROLLER.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
