@@ -1,10 +1,7 @@
 package de.selsus74.kilnexpansion;
 
 import com.mojang.logging.LogUtils;
-import de.selsus74.kilnexpansion.registry.ModBlockEntities;
-import de.selsus74.kilnexpansion.registry.ModBlocks;
-import de.selsus74.kilnexpansion.registry.ModCreativeTabs;
-import de.selsus74.kilnexpansion.registry.ModItems;
+import de.selsus74.kilnexpansion.registry.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -30,7 +27,8 @@ public class KilnExpansion {
         ModBlocks.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        //ModMenuTypes.register(modEventBus);
+        ModRecipeTypes.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         //ModCreativeTabs.register(modEventBus);
         //ModRecipes.register(modEventBus);
         //ModParticles.PARTICLES.register(modEventBus);

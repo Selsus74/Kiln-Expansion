@@ -16,7 +16,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> MAIN = TABS.register("main",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.kilnexpansion"))
-                    .icon(() -> new ItemStack(ModBlocks.BLOCK_MAP.get("draft_kiln_bricks").get()))
+                    .icon(() -> new ItemStack(ModBlocks.DRAFT_KILN_CONTROLLER.get()))
                     .displayItems((params, output) ->
                             ModItems.ITEMS.getEntries().forEach(item -> output.accept(item.get())))
                     .build());

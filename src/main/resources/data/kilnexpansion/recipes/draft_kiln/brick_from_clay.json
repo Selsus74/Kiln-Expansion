@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:draft_kiln",
+  "ingredient": { "item": "minecraft:clay_ball" },
+  "result": { "item": "minecraft:brick" },
+  "processing_time": 200
+}

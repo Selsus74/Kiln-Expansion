@@ -20,6 +20,9 @@ public class ModLangProvider extends LanguageProvider {
         //---creative tab title---
         add("itemGroup.kilnexpansion", "Kiln Expansion");
 
+        add("container.kilnexpansion.draft_kiln", "Draft Kiln");
+        add("message.kilnexpansion.draft_kiln.not_formed", "Structure incomplete");
+
         ModBlocks.BLOCKS.getEntries().forEach(block -> {
             if (block == ModBlocks.DRAFT_KILN_CONTROLLER) {
                 add(block.get(), "Draft Kiln");

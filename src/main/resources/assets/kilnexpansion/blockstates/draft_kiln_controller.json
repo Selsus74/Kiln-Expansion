@@ -1,7 +1,12 @@
 {
   "variants": {
-    "": {
-      "model": "kilnexpansion:block/draft_kiln_bricks"
-    }
+    "facing=north,formed=false": { "model": "kilnexpansion:block/draft_kiln_controller" },
+    "facing=east,formed=false":  { "model": "kilnexpansion:block/draft_kiln_controller", "y": 90 },
+    "facing=south,formed=false": { "model": "kilnexpansion:block/draft_kiln_controller", "y": 180 },
+    "facing=west,formed=false":  { "model": "kilnexpansion:block/draft_kiln_controller", "y": 270 },
+    "facing=north,formed=true":  { "model": "kilnexpansion:block/draft_kiln_controller_on" },
+    "facing=east,formed=true":   { "model": "kilnexpansion:block/draft_kiln_controller_on", "y": 90 },
+    "facing=south,formed=true":  { "model": "kilnexpansion:block/draft_kiln_controller_on", "y": 180 },
+    "facing=west,formed=true":   { "model": "kilnexpansion:block/draft_kiln_controller_on", "y": 270 }
   }
 }

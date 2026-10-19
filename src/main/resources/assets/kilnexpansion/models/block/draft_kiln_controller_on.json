@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "kilnexpansion:block/draft_kiln_controller_top",
+    "front": "kilnexpansion:block/draft_kiln_controller_front_on",
+    "side": "kilnexpansion:block/draft_kiln_bricks",
+    "bottom": "kilnexpansion:block/draft_kiln_bricks"
+  }
+}

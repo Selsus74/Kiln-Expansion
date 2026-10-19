@@ -2,5 +2,7 @@
   "block.kilnexpansion.draft_kiln_bricks": "Draft Kiln Bricks",
   "block.kilnexpansion.draft_kiln_bricks_wall": "Draft Kiln Bricks Wall",
   "block.kilnexpansion.draft_kiln_controller": "Draft Kiln",
-  "itemGroup.kilnexpansion": "Kiln Expansion"
+  "container.kilnexpansion.draft_kiln": "Draft Kiln",
+  "itemGroup.kilnexpansion": "Kiln Expansion",
+  "message.kilnexpansion.draft_kiln.not_formed": "Structure incomplete"
 }
