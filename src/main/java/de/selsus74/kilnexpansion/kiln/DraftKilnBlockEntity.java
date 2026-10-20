@@ -35,6 +35,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
+import static de.selsus74.kilnexpansion.kiln.DraftKilnParticleRenderer.spawnFormedParticle;
+
 public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
 
     public static final int SLOT_INPUT = 0;
@@ -79,42 +81,66 @@ public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
         super(ModBlockEntities.DRAFT_KILN.get(), pos, state);
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, DraftKilnBlockEntity be) {
+    public static void serverTick(Level level, BlockPos pos, DraftKilnBlockEntity be) {
+        //---every 20 game ticks check the structure---
         if (level.getGameTime() % 20 == 0) {
             be.updateFormedState();
         }
-        state = be.getBlockState();
+        BlockState state = be.getBlockState();
         boolean changed = false;
 
+        //---check formed, if not reset progress---
         if (!state.getValue(DraftKilnControllerBlock.FORMED)) {
             if (be.progress != 0 || be.burnTime != 0) {
                 be.progress = 0;
                 be.burnTime = Math.max(0, be.burnTime - 2);
                 changed = true;
             }
+            //---also set lit block property false---
+            level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, false), Block.UPDATE_ALL);
         } else {
+            //---get recipes---
             Optional<DraftKilnRecipe> recipe = be.findRecipe();
+            //---make boolean to determine if the kiln can work---
             boolean canWork = recipe.isPresent() && be.canOutput(recipe.get());
 
+            //---recipe is valid but burnTime is 0, try to consume fuel---
             if (canWork && be.burnTime <= 0) {
                 changed |= be.tryConsumeFuel();
             }
 
+            //---burning when burnTime greater than 0---
             boolean burning = be.burnTime > 0;
+            //---if burning true---
             if (burning) {
                 be.burnTime--;
                 changed = true;
+                //---if not lit true, then set now---
+                if (!state.getValue(DraftKilnControllerBlock.LIT)) {
+                    level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, true), Block.UPDATE_ALL);
+                }
+            }
+            else {
+                //---if not burning but lit still true, set lit to false---
+                if (state.getValue(DraftKilnControllerBlock.LIT)) {
+                    level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, false), Block.UPDATE_ALL);
+                }
             }
 
+            //---work if valid recipe and active burnTime---
             if (canWork && burning) {
+                //---progressTotal = processingTime form JSON recipe---
                 be.progressTotal = recipe.get().getProcessingTime();
+                //---increment current progress---
                 be.progress++;
                 changed = true;
+                //---when current progress = total progress do craft---
                 if (be.progress >= be.progressTotal) {
                     be.craft(recipe.get());
                     be.progress = 0;
                 }
             } else if (be.progress > 0) {
+                //---progress drops if no recipe or burnTime is there---
                 be.progress = Math.max(0, be.progress - 2);
                 changed = true;
             }
@@ -129,12 +155,17 @@ public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
         boolean valid = DraftKilnStructure.isValid(level, worldPosition, state.getValue(DraftKilnControllerBlock.FACING));
         if (valid != state.getValue(DraftKilnControllerBlock.FORMED)) {
             level.setBlock(worldPosition, state.setValue(DraftKilnControllerBlock.FORMED, valid), Block.UPDATE_ALL);
+            if (valid) {
+                spawnFormedParticle(level, worldPosition, state);
+            }
         }
     }
 
     //---fuel helper - use in recipe handler---
     boolean tryConsumeFuel() {
+        //---get item in fuel stack---
         ItemStack fuel = items.getStackInSlot(SLOT_FUEL);
+        //---get burnTime of item---
         int time = ForgeHooks.getBurnTime(fuel, null);
         if (time <= 0) return false;
         burnTime = burnTimeTotal = time;
