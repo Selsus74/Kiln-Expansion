@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class DraftKilnParticleRenderer {
+public class KilnParticleRenderer {
     //---this is serverside particles send to clients nearby via sendParticles---
     //---this should only be used if the server needs to keep track of it---
     //---e.g. with events like structure formed---

@@ -35,7 +35,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-import static de.selsus74.kilnexpansion.kiln.DraftKilnParticleRenderer.spawnFormedParticle;
+import static de.selsus74.kilnexpansion.kiln.KilnParticleRenderer.spawnFormedParticle;
 
 public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -165,11 +165,28 @@ public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
     boolean tryConsumeFuel() {
         //---get item in fuel stack---
         ItemStack fuel = items.getStackInSlot(SLOT_FUEL);
+
         //---get burnTime of item---
         int time = ForgeHooks.getBurnTime(fuel, null);
         if (time <= 0) return false;
+
         burnTime = burnTimeTotal = time;
-        fuel.shrink(1); // TODO ITEMS WIE LAVA MÜSSEN SEPERAT BEHANDLET WERDEN !
+
+        //---read the remainder BEFORE changing the stack; it can depend on the stack---
+        ItemStack remainder = fuel.getCraftingRemainingItem(); // EMPTY if the item has none
+
+        if (fuel.getCount() == 1) {
+            //---last item: put the remainder (e.g. empty bucket) in its place, or clear the slot (set empty stack)---
+            items.setStackInSlot(SLOT_FUEL, remainder);
+        } else {
+            //---shrink normal fuel stacks---
+            fuel.shrink(1);
+            if (!remainder.isEmpty() && level != null) {
+                //---stackable item with a remainder: can't go in the slot, so dispensed above the block---
+                Containers.dropItemStack(level, worldPosition.getX() + 0.5, worldPosition.getY() + 1.0,
+                        worldPosition.getZ() + 0.5, remainder);
+            }
+        }
         return true;
     }
 

@@ -59,6 +59,7 @@ public class DraftKilnControllerBlock extends HorizontalDirectionalBlock impleme
                 .setValue(FORMED, false);
     }
 
+    //---attach block entity---
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new DraftKilnBlockEntity(pos, state);
@@ -74,7 +75,7 @@ public class DraftKilnControllerBlock extends HorizontalDirectionalBlock impleme
                 : null;
     }
 
-    //---particle renderer (client side, needs no packets like DraftKilnParticleRenderer---
+    //---particle renderer (client side, needs no packets like KilnParticleRenderer---
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (!state.getValue(LIT)) return;
