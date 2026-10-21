@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "kilnexpansion:block/draft_kiln_bricks",
+    "side": "kilnexpansion:block/draft_kiln_bricks",
+    "top": "kilnexpansion:block/draft_kiln_bricks"
+  }
+}

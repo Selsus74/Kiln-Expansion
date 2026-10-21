@@ -1,6 +1,7 @@
 package de.selsus74.kilnexpansion.data;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
+import de.selsus74.kilnexpansion.registry.ModBlockTags;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -19,12 +20,22 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        //---standard wall, slab and mineable tags---
         for (String name : ModBlocks.STONE_TYPE_BLOCKS) {
             Block block = ModBlocks.BLOCK_MAP.get(name).get();
             Block wall = ModBlocks.BLOCK_MAP.get(name + "_wall").get();
+            Block slab = ModBlocks.BLOCK_MAP.get(name + "_slab").get();
 
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block, wall);
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block, wall, slab);
             tag(BlockTags.WALLS).add(wall);
+            tag(BlockTags.SLABS).add(slab);
         }
+        //---custom tags for structure declaration---
+        tag(ModBlockTags.DRAFT_KILN_BLOCKS).add(ModBlocks.BLOCK_MAP.get("draft_kiln_bricks").get());
+        tag(ModBlockTags.DRAFT_KILN_WALLS).add(ModBlocks.BLOCK_MAP.get("draft_kiln_bricks_wall").get());
+
+        tag(ModBlockTags.BLOOMERY_BLOCKS).add(ModBlocks.BLOCK_MAP.get("bloomery_bricks").get());
+        tag(ModBlockTags.BLOOMERY_WALLS).add(ModBlocks.BLOCK_MAP.get("bloomery_bricks_wall").get());
+        tag(ModBlockTags.BLOOMERY_SLABS).add(ModBlocks.BLOCK_MAP.get("bloomery_bricks_slab").get());
     }
 }

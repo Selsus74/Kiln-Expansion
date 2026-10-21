@@ -1,6 +1,6 @@
 package de.selsus74.kilnexpansion.multiblock;
 
-import de.selsus74.kilnexpansion.registry.ModTags;
+import de.selsus74.kilnexpansion.registry.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -14,7 +14,7 @@ public final class DraftKilnStructure {
             {"BBB", "BBB", "BBB"},
             {"BCB", "B B", "BBB"},
             {"WBW", "B B", "WBW"},
-            {" B ", "B B", " B "},
+            {" B ", "BWB", " B "},
             {" B ", "B B", " B "}
     };
 
@@ -44,12 +44,12 @@ public final class DraftKilnStructure {
 
                     switch(c){
                         case 'B':
-                            if (!level.getBlockState(pos).is(ModTags.DRAFT_KILN_BLOCKS)) {
+                            if (!level.getBlockState(pos).is(ModBlockTags.DRAFT_KILN_BLOCKS)) {
                                 return false;
                             }
                             break;
                         case 'W':
-                            if (!level.getBlockState(pos).is(ModTags.DRAFT_KILN_WALLS)) {
+                            if (!level.getBlockState(pos).is(ModBlockTags.DRAFT_KILN_WALLS)) {
                                 return false;
                             }
                             break;

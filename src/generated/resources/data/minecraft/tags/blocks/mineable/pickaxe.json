@@ -1,6 +1,10 @@
 {
   "values": [
     "kilnexpansion:draft_kiln_bricks",
-    "kilnexpansion:draft_kiln_bricks_wall"
+    "kilnexpansion:draft_kiln_bricks_wall",
+    "kilnexpansion:draft_kiln_bricks_slab",
+    "kilnexpansion:bloomery_bricks",
+    "kilnexpansion:bloomery_bricks_wall",
+    "kilnexpansion:bloomery_bricks_slab"
   ]
 }

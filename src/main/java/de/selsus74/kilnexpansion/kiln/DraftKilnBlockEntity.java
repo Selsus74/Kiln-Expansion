@@ -77,6 +77,7 @@ public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
         public int getCount() { return 8; }
     };
 
+    //---constructor---
     public DraftKilnBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DRAFT_KILN.get(), pos, state);
     }

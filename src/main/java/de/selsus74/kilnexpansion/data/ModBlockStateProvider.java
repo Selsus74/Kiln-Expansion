@@ -5,6 +5,7 @@ import de.selsus74.kilnexpansion.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,6 +23,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
             //---full block + its item model---
             simpleBlockWithItem(block, cubeAll(block));
+
+            //---slab state and model---
+            String slabName = name + "_slab";
+            SlabBlock slab = (SlabBlock) ModBlocks.BLOCK_MAP.get(slabName).get();
+            slabBlock(slab, texture, texture);
+
+            //---slab item model---
+            models().slab(slabName, texture, texture, texture);
+            itemModels().withExistingParent(slabName, modLoc("block/" + slabName));
 
             //---wall block state + models---
             String wallName = name + "_wall";

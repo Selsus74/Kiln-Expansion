@@ -1,3 +1,9 @@
-// 1.20.1	2026-10-18T19:09:40.5882417	Tags for minecraft:block mod id kilnexpansion
-dac48e3177e64c1b4fe74ffc76715505cc0d4f28 data/minecraft/tags/blocks/mineable/pickaxe.json
-bafb856a2aec5ce06dd64fd8d0610a7aebe4f597 data/minecraft/tags/blocks/walls.json
+// 1.20.1	2026-10-22T01:11:23.5696666	Tags for minecraft:block mod id kilnexpansion
+2817bbe11a148dc615acfabb37f9bea6ca8d8292 data/kilnexpansion/tags/blocks/is_bloomery_block.json
+3388bb00e2d124c22e254a454d2d3f0e1b1aa390 data/kilnexpansion/tags/blocks/is_bloomery_slab.json
+1e0658f67366a870983326a505f724e833ebfcb8 data/kilnexpansion/tags/blocks/is_bloomery_wall.json
+bfe8b6d75e85df72a697f4d20c0c2f65d2b595b4 data/kilnexpansion/tags/blocks/is_draft_kiln_block.json
+bafb856a2aec5ce06dd64fd8d0610a7aebe4f597 data/kilnexpansion/tags/blocks/is_draft_kiln_wall.json
+33365267ad8f6ef6f77611b3aa591ccb4fe2d8e3 data/minecraft/tags/blocks/mineable/pickaxe.json
+7a810c935bb9335f95d518c6bfec4650440e66df data/minecraft/tags/blocks/slabs.json
+2a1356b73e659add30aa0e92e964eda437f63698 data/minecraft/tags/blocks/walls.json

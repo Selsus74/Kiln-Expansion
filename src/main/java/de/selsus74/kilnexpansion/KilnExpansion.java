@@ -29,14 +29,6 @@ public class KilnExpansion {
         ModBlockEntities.register(modEventBus);
         ModRecipeTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
-        //ModCreativeTabs.register(modEventBus);
-        //ModRecipes.register(modEventBus);
-        //ModParticles.PARTICLES.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    //---register client only (nested class)---
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
     }
 }

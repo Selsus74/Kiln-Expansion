@@ -13,7 +13,9 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() ->
-                MenuScreens.register(ModMenuTypes.DRAFT_KILN_MENU.get(), DraftKilnScreen::new));
+        event.enqueueWork(() -> {
+            MenuScreens.register(ModMenuTypes.DRAFT_KILN_MENU.get(), DraftKilnScreen::new);
+            MenuScreens.register(ModMenuTypes.BLOOMERY_MENU.get(), BloomeryScreen::new);
+        });
     }
 }

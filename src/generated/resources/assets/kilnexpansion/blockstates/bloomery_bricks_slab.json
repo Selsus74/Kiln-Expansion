@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "kilnexpansion:block/bloomery_bricks_slab"
+    },
+    "type=double": {
+      "model": "kilnexpansion:block/bloomery_bricks"
+    },
+    "type=top": {
+      "model": "kilnexpansion:block/bloomery_bricks_slab_top"
+    }
+  }
+}

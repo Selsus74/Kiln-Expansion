@@ -1,8 +1,15 @@
 {
+  "block.kilnexpansion.bloomery_bricks": "Bloomery Bricks",
+  "block.kilnexpansion.bloomery_bricks_slab": "Bloomery Bricks Slab",
+  "block.kilnexpansion.bloomery_bricks_wall": "Bloomery Bricks Wall",
+  "block.kilnexpansion.bloomery_controller": "Bloomery",
   "block.kilnexpansion.draft_kiln_bricks": "Draft Kiln Bricks",
+  "block.kilnexpansion.draft_kiln_bricks_slab": "Draft Kiln Bricks Slab",
   "block.kilnexpansion.draft_kiln_bricks_wall": "Draft Kiln Bricks Wall",
   "block.kilnexpansion.draft_kiln_controller": "Draft Kiln",
+  "container.kilnexpansion.bloomery": "Bloomery",
   "container.kilnexpansion.draft_kiln": "Draft Kiln",
   "itemGroup.kilnexpansion": "Kiln Expansion",
+  "message.kilnexpansion.bloomery.not_formed": "Structure incomplete",
   "message.kilnexpansion.draft_kiln.not_formed": "Structure incomplete"
 }

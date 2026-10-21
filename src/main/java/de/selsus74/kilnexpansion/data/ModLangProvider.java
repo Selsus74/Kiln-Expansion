@@ -21,13 +21,17 @@ public class ModLangProvider extends LanguageProvider {
         add("itemGroup.kilnexpansion", "Kiln Expansion");
 
         add("container.kilnexpansion.draft_kiln", "Draft Kiln");
+        add("container.kilnexpansion.bloomery", "Bloomery");
+
         add("message.kilnexpansion.draft_kiln.not_formed", "Structure incomplete");
+        add("message.kilnexpansion.bloomery.not_formed", "Structure incomplete");
 
         ModBlocks.BLOCKS.getEntries().forEach(block -> {
             if (block == ModBlocks.DRAFT_KILN_CONTROLLER) {
                 add(block.get(), "Draft Kiln");
-            }
-            else {
+            } else if (block == ModBlocks.BLOOMERY_CONTROLLER) {
+                add(block.get(), "Bloomery");
+            } else {
                 add(block.get(), toTitle(block.getId().getPath()));
             }
         });

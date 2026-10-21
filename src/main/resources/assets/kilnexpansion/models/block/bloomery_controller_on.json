@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "kilnexpansion:block/bloomery_bricks",
+    "front": "kilnexpansion:block/bloomery_controller_front_on",
+    "side": "kilnexpansion:block/bloomery_bricks",
+    "bottom": "kilnexpansion:block/bloomery_bricks"
+  }
+}

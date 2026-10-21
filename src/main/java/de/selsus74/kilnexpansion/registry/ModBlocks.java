@@ -1,13 +1,16 @@
 package de.selsus74.kilnexpansion.registry;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
+import de.selsus74.kilnexpansion.kiln.BloomeryControllerBlock;
 import de.selsus74.kilnexpansion.kiln.DraftKilnControllerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,7 +31,8 @@ public class ModBlocks {
 
     //---list of stone like blocks (e.g. bricks) and their corresponding wall---
     public static final List<String> STONE_TYPE_BLOCKS = List.of(
-            "draft_kiln_bricks"
+            "draft_kiln_bricks",
+            "bloomery_bricks"
     );
 
     //---map name to registry objects---
@@ -49,6 +53,14 @@ public class ModBlocks {
             RegistryObject<Item> item = ITEMS.register(name,
                     () -> new BlockItem(block.get(), new Item.Properties()));
 
+            //---slab variant of the same block---
+            String slabName = name + "_slab";
+            RegistryObject<Block> slab = BLOCKS.register(slabName,
+                    () -> new SlabBlock(BlockBehaviour.Properties.copy(block.get())));
+
+            RegistryObject<Item> slabItem = ITEMS.register(slabName,
+                    () -> new BlockItem(slab.get(), new Item.Properties()));
+
             //---wall variant of the same block---
             String wallName = name + "_wall";
             RegistryObject<Block> wall = BLOCKS.register(wallName,
@@ -58,6 +70,8 @@ public class ModBlocks {
 
             BLOCK_MAP.put(name, block);
             ITEM_MAP.put(name, item);
+            BLOCK_MAP.put(slabName, slab);
+            ITEM_MAP.put(slabName, slabItem);
             BLOCK_MAP.put(wallName, wall);
             ITEM_MAP.put(wallName, wallItem);
         }
@@ -70,11 +84,26 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_RED)
                     .strength(3.0f, 6.0f)
                     .sound(SoundType.STONE)
+                    .lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 9 : 0)
                     .requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Item> DRAFT_KILN_CONTROLLER_ITEM = ITEMS.register(
             "draft_kiln_controller",
             () -> new BlockItem(DRAFT_KILN_CONTROLLER.get(), new Item.Properties()));
+
+    //---bloomery controller block + block item---
+    public static final RegistryObject<Block> BLOOMERY_CONTROLLER = BLOCKS.register(
+            "bloomery_controller",
+            () -> new BloomeryControllerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .strength(3.0f, 6.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 13 : 0)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Item> BLOOMERY_CONTROLLER_ITEM = ITEMS.register(
+            "bloomery_controller",
+            () -> new BlockItem(BLOOMERY_CONTROLLER.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

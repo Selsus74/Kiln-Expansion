@@ -1,6 +1,7 @@
 package de.selsus74.kilnexpansion.registry;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
+import de.selsus74.kilnexpansion.menu.BloomeryMenu;
 import de.selsus74.kilnexpansion.menu.DraftKilnMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -14,8 +15,13 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, KilnExpansion.MOD_ID);
 
+    //---register draft kiln menu---
     public static final RegistryObject<MenuType<DraftKilnMenu>> DRAFT_KILN_MENU =
             MENUS.register("draft_kiln_menu", () -> IForgeMenuType.create(DraftKilnMenu::new));
+
+    //---register bloomery menu---
+    public static final RegistryObject<MenuType<BloomeryMenu>> BLOOMERY_MENU =
+            MENUS.register("bloomery_menu", () -> IForgeMenuType.create(BloomeryMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

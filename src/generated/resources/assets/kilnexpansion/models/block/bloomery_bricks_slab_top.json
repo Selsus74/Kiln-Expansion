@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "kilnexpansion:block/bloomery_bricks",
+    "side": "kilnexpansion:block/bloomery_bricks",
+    "top": "kilnexpansion:block/bloomery_bricks"
+  }
+}
