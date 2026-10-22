@@ -1,12 +1,10 @@
 package de.selsus74.kilnexpansion.kiln;
 
 import de.selsus74.kilnexpansion.menu.BloomeryMenu;
-import de.selsus74.kilnexpansion.menu.DraftKilnMenu;
 import de.selsus74.kilnexpansion.multiblock.BloomeryStructure;
-import de.selsus74.kilnexpansion.multiblock.DraftKilnStructure;
 import de.selsus74.kilnexpansion.recipe.BloomeryRecipe;
-import de.selsus74.kilnexpansion.recipe.DraftKilnRecipe;
 import de.selsus74.kilnexpansion.registry.ModBlockEntities;
+import de.selsus74.kilnexpansion.registry.ModItemTags;
 import de.selsus74.kilnexpansion.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,7 +13,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -180,8 +177,8 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
         int time = ForgeHooks.getBurnTime(fuel, null);
         if (time <= 0) return false;
 
-        //---only accept coals--- TODO: add more compatible tags
-        if (!fuel.is(ItemTags.COALS)) {return false;}
+        //---only accept tag: bloomery_fuel---
+        if (!fuel.is(ModItemTags.BLOOMERY_FUEL)) {return false;}
 
         burnTime = burnTimeTotal = time;
 

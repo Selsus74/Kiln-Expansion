@@ -4,6 +4,8 @@ import de.selsus74.kilnexpansion.KilnExpansion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,7 +24,8 @@ public class DataGenerators {
 
         gen.addProvider(event.includeClient(), new ModBlockStateProvider(out, efh));
         gen.addProvider(event.includeClient(), new ModLangProvider(out));
-        gen.addProvider(event.includeServer(), new ModBlockTagProvider(out, lookup, efh));
+        ModBlockTagProvider blockTags = gen.addProvider(event.includeServer(), new ModBlockTagProvider(out, lookup, efh));
+        gen.addProvider(event.includeServer(), new ModItemTagProvider(out, lookup, blockTags.contentsGetter(), efh));
         gen.addProvider(event.includeServer(), ModLootTables.create(out));
     }
 }

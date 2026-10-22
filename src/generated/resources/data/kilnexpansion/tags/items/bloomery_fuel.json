@@ -1,0 +1,30 @@
+{
+  "values": [
+    "#minecraft:coals",
+    "#forge:storage_blocks/coal",
+    {
+      "id": "#forge:storage_blocks/charcoal",
+      "required": false
+    },
+    {
+      "id": "#forge:coal_coke",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/coal_coke",
+      "required": false
+    },
+    {
+      "id": "#forge:coal_petcoke",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/coal_petcoke",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/petcoke",
+      "required": false
+    }
+  ]
+}

@@ -1,11 +1,10 @@
 package de.selsus74.kilnexpansion.menu;
 
 import de.selsus74.kilnexpansion.kiln.BloomeryBlockEntity;
-import de.selsus74.kilnexpansion.kiln.DraftKilnBlockEntity;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
+import de.selsus74.kilnexpansion.registry.ModItemTags;
 import de.selsus74.kilnexpansion.registry.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -38,8 +37,8 @@ public class BloomeryMenu extends AbstractContainerMenu {
         addSlot(new SlotItemHandler(items, BloomeryBlockEntity.SLOT_FUEL, 56, 53) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                //---only placeable if tag is also coals--- TODO: like with fuel consume handler, this should be more tags
-                return ForgeHooks.getBurnTime(stack,null) > 0 && stack.is(ItemTags.COALS);
+                //---only placeable if tag is bloomery_fuel---
+                return ForgeHooks.getBurnTime(stack,null) > 0 && stack.is(ModItemTags.BLOOMERY_FUEL);
             }
         });
         addSlot(new SlotItemHandler(items, BloomeryBlockEntity.SLOT_OUTPUT, 116, 35) {
