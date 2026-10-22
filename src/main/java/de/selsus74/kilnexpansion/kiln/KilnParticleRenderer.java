@@ -1,5 +1,6 @@
 package de.selsus74.kilnexpansion.kiln;
 
+import de.selsus74.kilnexpansion.kiln.draft_kiln.DraftKilnControllerBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;

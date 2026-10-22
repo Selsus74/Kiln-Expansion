@@ -23,4 +23,8 @@ public class ModBlockTags {
 
     public static final TagKey<Block> BLOOMERY_SLABS =
             TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "is_bloomery_slab"));
+
+    //---charcoal pile valid blocks tag
+    public static final TagKey<Block> CHARCOAL_PILE_BLOCKS =
+            TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "is_charcoal_pile_block"));
 }

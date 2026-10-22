@@ -1,6 +1,6 @@
 package de.selsus74.kilnexpansion.menu;
 
-import de.selsus74.kilnexpansion.kiln.BloomeryBlockEntity;
+import de.selsus74.kilnexpansion.kiln.bloomery.BloomeryBlockEntity;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import de.selsus74.kilnexpansion.registry.ModItemTags;
 import de.selsus74.kilnexpansion.registry.ModMenuTypes;

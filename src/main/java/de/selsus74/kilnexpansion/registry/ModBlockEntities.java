@@ -1,8 +1,9 @@
 package de.selsus74.kilnexpansion.registry;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
-import de.selsus74.kilnexpansion.kiln.BloomeryBlockEntity;
-import de.selsus74.kilnexpansion.kiln.DraftKilnBlockEntity;
+import de.selsus74.kilnexpansion.kiln.bloomery.BloomeryBlockEntity;
+import de.selsus74.kilnexpansion.kiln.charcoal_pile.CharcoalPileBlockEntity;
+import de.selsus74.kilnexpansion.kiln.draft_kiln.DraftKilnBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,6 +26,12 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("bloomery", () ->
                     BlockEntityType.Builder.of(BloomeryBlockEntity::new,
                             ModBlocks.BLOOMERY_CONTROLLER.get()).build(null));
+
+    //---register charcoal pile block entity type---
+    public static final RegistryObject<BlockEntityType<CharcoalPileBlockEntity>> CHARCOAL_PILE =
+            BLOCK_ENTITIES.register("charcoal_pile", () ->
+                    BlockEntityType.Builder.of(CharcoalPileBlockEntity::new,
+                            ModBlocks.CHARCOAL_PILE_CONTROLLER.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

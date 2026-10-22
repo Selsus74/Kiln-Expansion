@@ -1,6 +1,6 @@
 package de.selsus74.kilnexpansion.menu;
 
-import de.selsus74.kilnexpansion.kiln.DraftKilnBlockEntity;
+import de.selsus74.kilnexpansion.kiln.draft_kiln.DraftKilnBlockEntity;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import de.selsus74.kilnexpansion.registry.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;

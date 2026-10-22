@@ -1,8 +1,10 @@
 package de.selsus74.kilnexpansion.registry;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
-import de.selsus74.kilnexpansion.kiln.BloomeryControllerBlock;
-import de.selsus74.kilnexpansion.kiln.DraftKilnControllerBlock;
+import de.selsus74.kilnexpansion.kiln.bloomery.BloomeryControllerBlock;
+import de.selsus74.kilnexpansion.kiln.charcoal_pile.CharcoalPileControllerBlock;
+import de.selsus74.kilnexpansion.kiln.charcoal_pile.CharcoalPilePhase;
+import de.selsus74.kilnexpansion.kiln.draft_kiln.DraftKilnControllerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -104,6 +106,33 @@ public class ModBlocks {
     public static final RegistryObject<Item> BLOOMERY_CONTROLLER_ITEM = ITEMS.register(
             "bloomery_controller",
             () -> new BlockItem(BLOOMERY_CONTROLLER.get(), new Item.Properties()));
+
+    //---charcoal pile controller block + block item---
+    public static final RegistryObject<Block> CHARCOAL_PILE_CONTROLLER = BLOCKS.register(
+            "charcoal_pile_controller",
+            () -> new CharcoalPileControllerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .strength(3.0f, 6.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> state.getValue(CharcoalPileControllerBlock.PHASE) == CharcoalPilePhase.BURNING ? 13 : 0)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Item> CHARCOAL_PILE_CONTROLLER_ITEM = ITEMS.register(
+            "charcoal_pile_controller",
+            () -> new BlockItem(CHARCOAL_PILE_CONTROLLER.get(), new Item.Properties()));
+
+    //---charcoal pile vent block + block item--- TODO: custom block
+    public static final RegistryObject<Block> CHARCOAL_PILE_VENT = BLOCKS.register(
+            "charcoal_pile_vent",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(3.5f)
+                    .sound(SoundType.STONE)
+                    .pushReaction(PushReaction.BLOCK)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Item> CHARCOAL_PILE_VENT_ITEM = ITEMS.register(
+            "charcoal_pile_vent",
+            () -> new BlockItem(CHARCOAL_PILE_VENT.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

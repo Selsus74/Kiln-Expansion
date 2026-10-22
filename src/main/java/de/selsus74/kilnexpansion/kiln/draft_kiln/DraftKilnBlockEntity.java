@@ -1,10 +1,9 @@
-package de.selsus74.kilnexpansion.kiln;
+package de.selsus74.kilnexpansion.kiln.draft_kiln;
 
-import de.selsus74.kilnexpansion.menu.BloomeryMenu;
-import de.selsus74.kilnexpansion.multiblock.BloomeryStructure;
-import de.selsus74.kilnexpansion.recipe.BloomeryRecipe;
+import de.selsus74.kilnexpansion.menu.DraftKilnMenu;
+import de.selsus74.kilnexpansion.multiblock.DraftKilnStructure;
+import de.selsus74.kilnexpansion.recipe.DraftKilnRecipe;
 import de.selsus74.kilnexpansion.registry.ModBlockEntities;
-import de.selsus74.kilnexpansion.registry.ModItemTags;
 import de.selsus74.kilnexpansion.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,7 +37,7 @@ import java.util.Optional;
 
 import static de.selsus74.kilnexpansion.kiln.KilnParticleRenderer.spawnFormedParticle;
 
-public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
+public class DraftKilnBlockEntity extends BlockEntity implements MenuProvider {
 
     public static final int SLOT_INPUT = 0;
     public static final int SLOT_FUEL = 1;
@@ -70,25 +69,20 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
             };
             return (i % 2 == 0) ? (value & 0xFFFF) : (value >>> 16);
         }
-
         @Override
         public void set(int i, int value) {
             //never called - Client uses SimpleContainerData
         }
-
         @Override
-        public int getCount() {
-            return 8;
-        }
+        public int getCount() { return 8; }
     };
 
     //---constructor---
-    public BloomeryBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.BLOOMERY.get(), pos, state);
+    public DraftKilnBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.DRAFT_KILN.get(), pos, state);
     }
 
-
-    public static void serverTick(Level level, BlockPos pos, BloomeryBlockEntity be) {
+    public static void serverTick(Level level, BlockPos pos, DraftKilnBlockEntity be) {
         //---every 20 game ticks check the structure---
         if (level.getGameTime() % 20 == 0) {
             be.updateFormedState();
@@ -97,17 +91,17 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
         boolean changed = false;
 
         //---check formed, if not reset progress---
-        if (!state.getValue(BloomeryControllerBlock.FORMED)) {
+        if (!state.getValue(DraftKilnControllerBlock.FORMED)) {
             if (be.progress != 0 || be.burnTime != 0) {
                 be.progress = 0;
                 be.burnTime = Math.max(0, be.burnTime - 2);
                 changed = true;
             }
             //---also set lit block property false---
-            level.setBlock(pos, state.setValue(BloomeryControllerBlock.LIT, false), Block.UPDATE_ALL);
+            level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, false), Block.UPDATE_ALL);
         } else {
             //---get recipes---
-            Optional<BloomeryRecipe> recipe = be.findRecipe();
+            Optional<DraftKilnRecipe> recipe = be.findRecipe();
             //---make boolean to determine if the kiln can work---
             boolean canWork = recipe.isPresent() && be.canOutput(recipe.get());
 
@@ -123,14 +117,14 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
                 be.burnTime--;
                 changed = true;
                 //---if not lit true, then set now---
-                if (!state.getValue(BloomeryControllerBlock.LIT)) {
-                    level.setBlock(pos, state.setValue(BloomeryControllerBlock.LIT, true), Block.UPDATE_ALL);
+                if (!state.getValue(DraftKilnControllerBlock.LIT)) {
+                    level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, true), Block.UPDATE_ALL);
                 }
             }
             else {
                 //---if not burning but lit still true, set lit to false---
-                if (state.getValue(BloomeryControllerBlock.LIT)) {
-                    level.setBlock(pos, state.setValue(BloomeryControllerBlock.LIT, false), Block.UPDATE_ALL);
+                if (state.getValue(DraftKilnControllerBlock.LIT)) {
+                    level.setBlock(pos, state.setValue(DraftKilnControllerBlock.LIT, false), Block.UPDATE_ALL);
                 }
             }
 
@@ -159,9 +153,9 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
     public void updateFormedState() {
         if (level == null || level.isClientSide) return;
         BlockState state = getBlockState();
-        boolean valid = BloomeryStructure.isValid(level, worldPosition, state.getValue(BloomeryControllerBlock.FACING));
-        if (valid != state.getValue(BloomeryControllerBlock.FORMED)) {
-            level.setBlock(worldPosition, state.setValue(BloomeryControllerBlock.FORMED, valid), Block.UPDATE_ALL);
+        boolean valid = DraftKilnStructure.isValid(level, worldPosition, state.getValue(DraftKilnControllerBlock.FACING));
+        if (valid != state.getValue(DraftKilnControllerBlock.FORMED)) {
+            level.setBlock(worldPosition, state.setValue(DraftKilnControllerBlock.FORMED, valid), Block.UPDATE_ALL);
             if (valid) {
                 spawnFormedParticle(level, worldPosition, state);
             }
@@ -176,9 +170,6 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
         //---get burnTime of item---
         int time = ForgeHooks.getBurnTime(fuel, null);
         if (time <= 0) return false;
-
-        //---only accept tag: bloomery_fuel---
-        if (!fuel.is(ModItemTags.BLOOMERY_FUEL)) {return false;}
 
         burnTime = burnTimeTotal = time;
 
@@ -200,18 +191,17 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
         return true;
     }
 
-
-    private Optional<BloomeryRecipe> findRecipe() {
+    private Optional<DraftKilnRecipe> findRecipe() {
         SimpleContainer container = new SimpleContainer(items.getStackInSlot(SLOT_INPUT));
-        return level.getRecipeManager().getRecipeFor(ModRecipeTypes.BLOOMERY.get(), container, level);
+        return level.getRecipeManager().getRecipeFor(ModRecipeTypes.DRAFT_KILN.get(), container, level);
     }
 
-    private boolean canOutput(BloomeryRecipe recipe) {
+    private boolean canOutput(DraftKilnRecipe recipe) {
         ItemStack result = recipe.getResultItem(level.registryAccess());
         return items.insertItem(SLOT_OUTPUT, result, true).isEmpty();
     }
 
-    private void craft(BloomeryRecipe recipe) {
+    private void craft(DraftKilnRecipe recipe) {
         items.extractItem(SLOT_INPUT, 1, false);
         items.insertItem(SLOT_OUTPUT, recipe.getResultItem(level.registryAccess()).copy(), false);
     }
@@ -222,17 +212,15 @@ public class BloomeryBlockEntity extends BlockEntity implements MenuProvider {
         Containers.dropContents(level, worldPosition, c);
     }
 
-    //---for menu - is translatable key---
     @Override
     public Component getDisplayName() {
-        return Component.translatable("container.kilnexpansion.bloomery");
+        return Component.translatable("container.kilnexpansion.draft_kiln");
     }
 
-    //---attach menu---
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return new BloomeryMenu(id, inventory, items, data, ContainerLevelAccess.create(level, worldPosition));
+        return new DraftKilnMenu(id, inventory, items, data, ContainerLevelAccess.create(level, worldPosition));
     }
 
     //---save / load---
