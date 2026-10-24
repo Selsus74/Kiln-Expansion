@@ -2,16 +2,19 @@ package de.selsus74.kilnexpansion.data;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
 import de.selsus74.kilnexpansion.registry.ForgeItemTags;
+import de.selsus74.kilnexpansion.registry.ModBlockTags;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import de.selsus74.kilnexpansion.registry.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,5 +39,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         //---pile igniters tag---
         tag(ModItemTags.PILE_IGNITERS).add(Items.FLINT_AND_STEEL);
+
+        copy(ModBlockTags.CHARCOAL_PILE_LOG,  ModItemTags.CHARCOAL_PILE_LOG);
+        copy(ModBlockTags.CHARCOAL_PILE_WOOD, ModItemTags.CHARCOAL_PILE_WOOD);
     }
 }

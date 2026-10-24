@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:draft_kiln",
+  "ingredient": { "item": "minecraft:netherrack" },
+  "result": { "item": "minecraft:nether_brick" },
+  "processing_time": 200
+}

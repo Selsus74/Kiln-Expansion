@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:bloomery",
+  "ingredient": { "item": "minecraft:ancient_debris" },
+  "result": { "item": "minecraft:netherite_scrap" },
+  "processing_time": 200
+}

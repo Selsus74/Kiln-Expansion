@@ -1,4 +1,6 @@
-// 1.20.1	2026-10-22T01:11:23.5696666	Tags for minecraft:block mod id kilnexpansion
+// 1.20.1	2026-10-25T00:37:04.2555904	Tags for minecraft:block mod id kilnexpansion
+9ce26d8785ccd83d719242707d1dde485db2b573 data/kilnexpansion/tags/blocks/charable_logs.json
+13b41dc6261fab662d7208fe0a678a1cfd1c9aa6 data/kilnexpansion/tags/blocks/charable_woods.json
 2817bbe11a148dc615acfabb37f9bea6ca8d8292 data/kilnexpansion/tags/blocks/is_bloomery_block.json
 3388bb00e2d124c22e254a454d2d3f0e1b1aa390 data/kilnexpansion/tags/blocks/is_bloomery_slab.json
 1e0658f67366a870983326a505f724e833ebfcb8 data/kilnexpansion/tags/blocks/is_bloomery_wall.json

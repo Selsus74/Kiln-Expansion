@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:bloomery",
+  "ingredient": { "item": "minecraft:raw_gold" },
+  "result": { "item": "minecraft:gold_ingot" },
+  "processing_time": 200
+}

@@ -3,6 +3,7 @@ package de.selsus74.kilnexpansion.kiln.charcoal_pile;
 import de.selsus74.kilnexpansion.kiln.KilnParticleRenderer;
 import de.selsus74.kilnexpansion.multiblock.CharcoalPileStructure;
 import de.selsus74.kilnexpansion.registry.ModBlockEntities;
+import de.selsus74.kilnexpansion.registry.ModBlockTags;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -52,7 +53,9 @@ public class CharcoalPileBlockEntity extends BlockEntity {
         if (wood.isEmpty()) return false;
 
         List<BlockPos> logs = wood.get().stream()
-                .filter(p -> level.getBlockState(p).is(BlockTags.LOGS))
+                .filter(p ->
+                        level.getBlockState(p).is(ModBlockTags.CHARCOAL_PILE_LOG)
+                                || level.getBlockState(p).is(ModBlockTags.CHARCOAL_PILE_WOOD))
                 .toList();
         if (logs.isEmpty()) return false;
 
@@ -87,12 +90,11 @@ public class CharcoalPileBlockEntity extends BlockEntity {
     //---Returns the charred block for a log/wood block, or null if it is not tagged with log---
     @Nullable
     private static Block charredFor(BlockState state) {
-        if (!state.is(BlockTags.LOGS)) return null;
+        if (state.is(ModBlockTags.CHARCOAL_PILE_LOG)) return ModBlocks.CHARRED_LOG.get();
 
-        String path = ForgeRegistries.BLOCKS.getKey(state.getBlock()).getPath();
-        boolean isWood = path.endsWith("_wood") || path.endsWith("_hyphae");
+        if (state.is(ModBlockTags.CHARCOAL_PILE_WOOD)) return ModBlocks.CHARRED_WOOD.get();
 
-        return isWood ? ModBlocks.CHARRED_WOOD.get() : ModBlocks.CHARRED_LOG.get();
+        return null;
     }
 
     //---this does the magic---

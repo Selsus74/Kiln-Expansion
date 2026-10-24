@@ -14,4 +14,10 @@ public class ModItemTags {
     //---register charcoal pile igniter tag---
     public static final TagKey<Item> PILE_IGNITERS =
             TagKey.create(Registries.ITEM, new ResourceLocation(KilnExpansion.MOD_ID, "pile_igniters"));
+
+    //---register tag for charcoal pile logs and wood blocks---
+    public static final TagKey<Item> CHARCOAL_PILE_LOG =
+            TagKey.create(Registries.ITEM, new ResourceLocation(KilnExpansion.MOD_ID, "charable_logs"));
+    public static final TagKey<Item> CHARCOAL_PILE_WOOD =
+            TagKey.create(Registries.ITEM, new ResourceLocation(KilnExpansion.MOD_ID, "charable_woods"));
 }

@@ -4,6 +4,7 @@ import de.selsus74.kilnexpansion.KilnExpansion;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModBlockTags {
@@ -24,7 +25,9 @@ public class ModBlockTags {
     public static final TagKey<Block> BLOOMERY_SLABS =
             TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "is_bloomery_slab"));
 
-    //---charcoal pile valid blocks tag
-    public static final TagKey<Block> CHARCOAL_PILE_BLOCKS =
-            TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "is_charcoal_pile_block"));
+    //---register tag for charcoal pile logs and wood blocks---
+    public static final TagKey<Block> CHARCOAL_PILE_LOG =
+            TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "charable_logs"));
+    public static final TagKey<Block> CHARCOAL_PILE_WOOD =
+            TagKey.create(Registries.BLOCK, new ResourceLocation(KilnExpansion.MOD_ID, "charable_woods"));
 }

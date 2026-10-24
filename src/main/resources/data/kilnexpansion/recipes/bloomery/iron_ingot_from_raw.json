@@ -2,5 +2,5 @@
   "type": "kilnexpansion:bloomery",
   "ingredient": { "item": "minecraft:raw_iron" },
   "result": { "item": "minecraft:iron_ingot" },
-  "processing_time": 1000
+  "processing_time": 200
 }

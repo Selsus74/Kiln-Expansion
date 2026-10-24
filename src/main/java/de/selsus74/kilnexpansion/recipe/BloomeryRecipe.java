@@ -44,6 +44,8 @@ public class BloomeryRecipe implements Recipe<SimpleContainer> {
     @Override
     public ItemStack getResultItem(RegistryAccess access) { return result; }
 
+    public Ingredient getIngredient() { return ingredient; }
+
     @Override
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();

@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:draft_kiln",
+  "ingredient": { "item": "minecraft:clay" },
+  "result": { "item": "minecraft:terracotta" },
+  "processing_time": 200
+}

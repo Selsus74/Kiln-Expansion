@@ -1,0 +1,6 @@
+{
+  "type": "kilnexpansion:draft_kiln",
+  "ingredient": { "tag": "minecraft:sand" },
+  "result": { "item": "minecraft:glass" },
+  "processing_time": 200
+}
