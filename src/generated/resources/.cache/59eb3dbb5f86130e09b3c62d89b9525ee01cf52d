@@ -1,8 +1,11 @@
-// 1.20.1	2026-10-22T00:52:27.0461871	Loot Tables
+// 1.20.1	2026-10-24T16:54:31.3308605	Loot Tables
 5e3bbfd78269597dd3a6c0b2e30fe06d6607a017 data/kilnexpansion/loot_tables/blocks/bloomery_bricks.json
 91e6c63c9634fc2aaecbf52ed53c5ecb46587bcf data/kilnexpansion/loot_tables/blocks/bloomery_bricks_slab.json
 240b9c192a28772b1a666b99626dc4b6ff4de5ab data/kilnexpansion/loot_tables/blocks/bloomery_bricks_wall.json
 87c124c0983beec611cb4589f32f33d28a68a926 data/kilnexpansion/loot_tables/blocks/bloomery_controller.json
+225ddcf904728f0481cb6684699d12d46bb4fc82 data/kilnexpansion/loot_tables/blocks/charcoal_pile_controller.json
+8348ccc07635bce4e0e19cccf838c48562d47479 data/kilnexpansion/loot_tables/blocks/charred_log.json
+f9db09beb65d27540f810c7ae1338fb2fb0f5429 data/kilnexpansion/loot_tables/blocks/charred_wood.json
 19348b30616f9dda522c3bb51290e676ea60e15a data/kilnexpansion/loot_tables/blocks/draft_kiln_bricks.json
 dddd879d5f8f2a07473937731b2bea067d6adb88 data/kilnexpansion/loot_tables/blocks/draft_kiln_bricks_slab.json
 dfbe665d471b63736a13fce47e859888d356e6c1 data/kilnexpansion/loot_tables/blocks/draft_kiln_bricks_wall.json

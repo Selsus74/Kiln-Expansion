@@ -7,12 +7,10 @@ import de.selsus74.kilnexpansion.kiln.charcoal_pile.CharcoalPilePhase;
 import de.selsus74.kilnexpansion.kiln.draft_kiln.DraftKilnControllerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -121,18 +119,24 @@ public class ModBlocks {
             "charcoal_pile_controller",
             () -> new BlockItem(CHARCOAL_PILE_CONTROLLER.get(), new Item.Properties()));
 
-    //---charcoal pile vent block + block item--- TODO: custom block
-    public static final RegistryObject<Block> CHARCOAL_PILE_VENT = BLOCKS.register(
-            "charcoal_pile_vent",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(3.5f)
-                    .sound(SoundType.STONE)
-                    .pushReaction(PushReaction.BLOCK)
-                    .requiresCorrectToolForDrops()));
+    //---charred blocks for charcoal pile---
+    //---shared block properties---
+    private static BlockBehaviour.Properties charredProps() {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
+                .instrument(NoteBlockInstrument.BASS)
+                .strength(1.5F)               // vanilla logs: 2.0, so charred is a bit more brittle
+                .sound(SoundType.WOOD);
+    }
+    public static final RegistryObject<Block> CHARRED_LOG =
+            BLOCKS.register("charred_log", () -> new RotatedPillarBlock(charredProps()));
+    public static final RegistryObject<Block> CHARRED_WOOD =
+            BLOCKS.register("charred_wood", () -> new RotatedPillarBlock(charredProps()));
 
-    public static final RegistryObject<Item> CHARCOAL_PILE_VENT_ITEM = ITEMS.register(
-            "charcoal_pile_vent",
-            () -> new BlockItem(CHARCOAL_PILE_VENT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHARRED_LOG_ITEM =
+            ITEMS.register("charred_log", () -> new BlockItem(CHARRED_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHARRED_WOOD_ITEM =
+            ITEMS.register("charred_wood", () -> new BlockItem(CHARRED_WOOD.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

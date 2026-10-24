@@ -25,13 +25,20 @@ public class ModLangProvider extends LanguageProvider {
 
         add("message.kilnexpansion.draft_kiln.not_formed", "Structure incomplete");
         add("message.kilnexpansion.bloomery.not_formed", "Structure incomplete");
+        add("message.kilnexpansion.charcoal_pile.not_formed", "Structure incomplete");
+
+        add("message.kilnexpansion.charcoal_pile.no_igniter", "You can't ignite the Pile with this");
+        add("message.kilnexpansion.charcoal_pile.not_ready", "You can't ignite the Pile right now");
+        add("message.kilnexpansion.charcoal_pile.no_wood", "The Pile needs at least one Block to process");
 
         ModBlocks.BLOCKS.getEntries().forEach(block -> {
             if (block == ModBlocks.DRAFT_KILN_CONTROLLER) {
                 add(block.get(), "Draft Kiln");
             } else if (block == ModBlocks.BLOOMERY_CONTROLLER) {
                 add(block.get(), "Bloomery");
-            } else {
+            } else if (block == ModBlocks.CHARCOAL_PILE_CONTROLLER) {
+                add(block.get(), "Charcoal Pile");
+            } else  {
                 add(block.get(), toTitle(block.getId().getPath()));
             }
         });

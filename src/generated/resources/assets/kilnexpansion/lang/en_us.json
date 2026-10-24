@@ -3,6 +3,9 @@
   "block.kilnexpansion.bloomery_bricks_slab": "Bloomery Bricks Slab",
   "block.kilnexpansion.bloomery_bricks_wall": "Bloomery Bricks Wall",
   "block.kilnexpansion.bloomery_controller": "Bloomery",
+  "block.kilnexpansion.charcoal_pile_controller": "Charcoal Pile",
+  "block.kilnexpansion.charred_log": "Charred Log",
+  "block.kilnexpansion.charred_wood": "Charred Wood",
   "block.kilnexpansion.draft_kiln_bricks": "Draft Kiln Bricks",
   "block.kilnexpansion.draft_kiln_bricks_slab": "Draft Kiln Bricks Slab",
   "block.kilnexpansion.draft_kiln_bricks_wall": "Draft Kiln Bricks Wall",
@@ -11,5 +14,9 @@
   "container.kilnexpansion.draft_kiln": "Draft Kiln",
   "itemGroup.kilnexpansion": "Kiln Expansion",
   "message.kilnexpansion.bloomery.not_formed": "Structure incomplete",
+  "message.kilnexpansion.charcoal_pile.no_igniter": "You can't ignite the Pile with this",
+  "message.kilnexpansion.charcoal_pile.no_wood": "The Pile needs at least one Block to process",
+  "message.kilnexpansion.charcoal_pile.not_formed": "Structure incomplete",
+  "message.kilnexpansion.charcoal_pile.not_ready": "You can't ignite the Pile right now",
   "message.kilnexpansion.draft_kiln.not_formed": "Structure incomplete"
 }

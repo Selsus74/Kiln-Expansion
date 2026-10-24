@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,phase=idle": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle"
+    },
+    "facing=north,phase=burning": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_burning"
+    },
+    "facing=north,phase=done": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_done"
+    },
+    "facing=north,phase=none": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle"
+    },
+    "facing=east,phase=idle": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 90
+    },
+    "facing=east,phase=burning": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_burning",
+      "y": 90
+    },
+    "facing=east,phase=done": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_done",
+      "y": 90
+    },
+    "facing=east,phase=none": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 90
+    },
+    "facing=south,phase=idle": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 180
+    },
+    "facing=south,phase=burning": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_burning",
+      "y": 180
+    },
+    "facing=south,phase=done": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_done",
+      "y": 180
+    },
+    "facing=south,phase=none": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 180
+    },
+    "facing=west,phase=idle": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 270
+    },
+    "facing=west,phase=burning": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_burning",
+      "y": 270
+    },
+    "facing=west,phase=done": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_done",
+      "y": 270
+    },
+    "facing=west,phase=none": {
+      "model": "kilnexpansion:block/charcoal_pile_controller_idle",
+      "y": 270
+    }
+  }
+}

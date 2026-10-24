@@ -1,2 +1,3 @@
-// 1.20.1	2026-10-22T17:53:11.2077871	Tags for minecraft:item mod id kilnexpansion
+// 1.20.1	2026-10-23T21:31:17.6202103	Tags for minecraft:item mod id kilnexpansion
 d785a1873884e8ca17bfb146548e6c3b4eeb38af data/kilnexpansion/tags/items/bloomery_fuel.json
+ea5453bb23292a045408ae8581a1bcde5230ac72 data/kilnexpansion/tags/items/pile_igniters.json
