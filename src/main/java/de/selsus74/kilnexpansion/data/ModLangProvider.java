@@ -2,7 +2,6 @@ package de.selsus74.kilnexpansion.data;
 
 import de.selsus74.kilnexpansion.KilnExpansion;
 import de.selsus74.kilnexpansion.registry.ModBlocks;
-import de.selsus74.kilnexpansion.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -49,6 +48,23 @@ public class ModLangProvider extends LanguageProvider {
         //for (var entry : ModBlocks.BLOCK_MAP.entrySet()) {
         //    add(entry.getValue().get(), toTitle(entry.getKey()));
         //}
+
+        //---for ponder scenes---
+        add("kilnexpansion.ponder.tag.kilns", "Kilns");
+        add("kilnexpansion.ponder.tag.kilns.description", "Multiblock furnaces for firing clay, smelting early metals and making charcoal");
+        //---add entries for ponder charcoal pile: scene 1---
+        add("kilnexpansion.ponder.charcoal_pile_build.header", "Building a Charcoal Pile");
+        add("kilnexpansion.ponder.charcoal_pile_build.text_1",
+                "Stack logs and wood in the middle"
+                        + "\n" + "You can use every Wood or Log tagged with charable_log/charable_wood");
+        add("kilnexpansion.ponder.charcoal_pile_build.text_2", "Cover everything in Packed Mud");
+        add("kilnexpansion.ponder.charcoal_pile_build.text_3", "Place the Controller to finish the Charcoal Pile");
+        //---add entries for ponder charcoal pile: scene 2---
+        add("kilnexpansion.ponder.charcoal_pile_burn.header", "Lighting the Charcoal Pile");
+        add("kilnexpansion.ponder.charcoal_pile_burn.text_1", "You can use any Item tagged with: pile_igniters");
+        add("kilnexpansion.ponder.charcoal_pile_burn.text_2", "Over several days the wood slowly turns into charred blocks, one by one at random");
+        add("kilnexpansion.ponder.charcoal_pile_burn.text_3", "When the Particle and Animations stop, the pile is finished and can be opened");
+        add("kilnexpansion.ponder.charcoal_pile_burn.text_4", "Breaking the charred wood drops some charcoal");
     }
 
     private static String toTitle(String id) {
