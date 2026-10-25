@@ -14,7 +14,7 @@ Making it passible to iterate over all registered Blocks and with the Help of Re
 add the Tags to the Blocks with corresponding Suffixes.
 
 ### Example KubeJS Script:
-```javascript
+```JS
 ServerEvents.tags('block', event => {
 //---all wood and logs are under the minecraft:logs tag---
   event.get('minecraft:logs').getObjectIds().forEach(id => {
