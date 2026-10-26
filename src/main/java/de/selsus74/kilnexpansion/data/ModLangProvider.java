@@ -65,6 +65,10 @@ public class ModLangProvider extends LanguageProvider {
         add("kilnexpansion.ponder.charcoal_pile_burn.text_2", "Over several days the wood slowly turns into charred blocks, one by one at random");
         add("kilnexpansion.ponder.charcoal_pile_burn.text_3", "When the Particle and Animations stop, the pile is finished and can be opened");
         add("kilnexpansion.ponder.charcoal_pile_burn.text_4", "Breaking the charred wood drops some charcoal");
+        //---draft kiln---
+        add("kilnexpansion.ponder.draft_kiln_build.header", "Building a Draft Kiln");
+        //---bloomery---
+        add("kilnexpansion.ponder.bloomery_build.header", "Building a Bloomery");
     }
 
     private static String toTitle(String id) {

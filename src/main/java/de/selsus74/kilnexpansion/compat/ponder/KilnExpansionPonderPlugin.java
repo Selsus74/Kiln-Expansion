@@ -12,15 +12,13 @@ public class KilnExpansionPonderPlugin implements PonderPlugin {
 
     @Override
     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> helper) {
-        /*
-        helper.forComponents(DRAFT_KILN_CONTROLLER_ID)
+
+        helper.forComponents(ModBlocks.DRAFT_KILN_CONTROLLER.getId())
                 .addStoryBoard("draft_kiln/build", DraftKilnScenes::build, KilnExpansionPonderTags.KILNS);
 
-        helper.forComponents(BLOOMERY_CONTROLLER_ID)
+        helper.forComponents(ModBlocks.BLOOMERY_CONTROLLER.getId())
                 .addStoryBoard("bloomery/build", BloomeryScenes::build, KilnExpansionPonderTags.KILNS);
 
-
-         */
         helper.forComponents(ModBlocks.CHARCOAL_PILE_CONTROLLER.getId())
                 .addStoryBoard("charcoal_pile/build", CharcoalPileScenes::build, KilnExpansionPonderTags.KILNS)
                 .addStoryBoard("charcoal_pile/build", CharcoalPileScenes::burn);

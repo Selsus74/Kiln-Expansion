@@ -27,7 +27,7 @@ public class CharcoalPileScenes {
             "kilnexpansion:charcoal_pile_controller");
 
     public static void build(SceneBuilder scene, SceneBuildingUtil util) {
-        scene.title("charcoal_pile_build", "Building a Charcoal Pile");
+        scene.title("charcoal_pile_build", String.valueOf(Component.translatable("kilnexpansion.ponder.charcoal_pile_build.header")));
         scene.configureBasePlate(0, 0, 7);
         scene.showBasePlate();
         scene.idle(10);
